@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:focusable="false"
+    android:focusableInTouchMode="false">
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_alignParentBottom="true"/>
+    <ImageView
+        android:id="@+id/mouse_pointer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:focusable="false"
+        android:visibility="gone"
+        app:srcCompat="@mipmap/mouse_pointer"
+        android:contentDescription="@string/mouse_pointer"/>
+    <RelativeLayout
+        android:id="@+id/dialog_back"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorHalfTransparentBlack"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        >
+        <RelativeLayout
+            android:id="@+id/dialog_panel"
+            android:layout_width="430dp"
+            android:layout_height="200dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            >
+            <EditText
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:maxLines="1"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:cursorVisible="false"
+                android:layout_marginTop="50dp"
+                android:id="@+id/search_bar"
+                android:layout_width="370dp"
+                android:layout_height="50dp"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/ic_search"
+                android:background="@drawable/search_bar_background"
+                android:autofillHints="@string/search_bar">
+
+
+            </EditText>
+
+            <ImageButton
+                android:id="@+id/voice_button"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_toEndOf="@id/search_bar"
+                android:background="@drawable/voice_button_background_default"
+                android:src="@drawable/ic_mic"
+                android:contentDescription="@string/voice_button"/>
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:focusable="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_default_background"
+                android:layout_below="@+id/search_bar"
+                android:src="@drawable/ic_back"
+                android:contentDescription="@string/back_button"/>
+
+            <ImageButton
+                android:id="@+id/forward_button"
+                android:layout_width="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/search_bar"
+                android:layout_toEndOf="@id/back_button"
+                android:background="@drawable/button_default_background"
+                android:src="@drawable/ic_forward"
+                android:contentDescription="@string/forward_button"/>
+            <ImageButton
+                android:id="@+id/refresh_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/button_default_background"
+                android:src="@drawable/ic_refresh"
+                android:layout_below="@+id/search_bar"
+                android:layout_toEndOf="@id/forward_button"
+                android:contentDescription="@string/refresh_button" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

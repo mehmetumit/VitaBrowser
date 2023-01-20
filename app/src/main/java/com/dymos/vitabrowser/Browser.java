@@ -1,5 +1,7 @@
 package com.dymos.vitabrowser;
 
+import android.net.http.SslError;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
@@ -25,4 +27,11 @@ public class Browser extends WebViewClient {
         searchBar.setHint(webView.getUrl());
 
     }
+
+    //ignore SSL handshake errors which usually occurs in emulator
+    @Override
+    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+        handler.proceed();
+    }
+
 }

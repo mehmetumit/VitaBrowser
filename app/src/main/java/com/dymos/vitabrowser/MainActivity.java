@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent speechRecognizerIntent;
     private View[][] panelViews ;
     private View focusTemp;
+    private String homePage = "https://www.google.com";
     //private static final String desktop_mode = "Mozilla/5.0 (X11; Linux x86_64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Safari/537.36 Puffin/9.0.0.50278AV";
     //private static final String mobile_mode = "Mozilla/5.0 (Linux; U; Android 4.4; en-us; Nexus 4 Build/JOP24G) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 MobileSafari/534.30";
     private final int UP = 0,DOWN = 1,LEFT = 2,RIGHT = 3;
@@ -225,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
         webView = findViewById(R.id.web_view);
         webView.setWebViewClient(browser = new Browser(searchBar,webView));
         webView.setWebChromeClient(webClient = new WebClient(this));
-        webView.loadUrl("https://www.google.com");
+        webView.loadUrl(homePage);
         webView.getSettings().setJavaScriptEnabled(true);
 
         //webView.getSettings().setUserAgentString("Mozilla/5.0 (X11; Linux x86_64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Safari/537.36 Puffin/9.0.0.50278AV");
@@ -250,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void doSearch(String query){
         if(query != null) {
-            webView.loadUrl("https://www.google.com/search?q=" + query);
+            webView.loadUrl(homePage + "/search?q=" + query);
             hideView(dialogBack);
         }
     }
@@ -346,10 +347,12 @@ public class MainActivity extends AppCompatActivity {
             //mousePointer.setVisibility(View.GONE);
         switch (keyCode){
             case KeyEvent.KEYCODE_BACK:
+                Log.e("current focus",""+getCurrentFocus());
+                focusTemp = getCurrentFocus();
                 if(focusTemp != null){
                     focusTemp.requestFocus();
                 }
-                focusTemp = getCurrentFocus();
+
                 dialogBack.setVisibility(View.GONE);
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:

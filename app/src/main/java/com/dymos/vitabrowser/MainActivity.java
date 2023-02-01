@@ -338,21 +338,12 @@ public class MainActivity extends AppCompatActivity {
         }else {
             panelViews[row][column].setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.button_focus_background));
         }
-        /*if(row == 0 && column == 0){
-            searchView.performClick();
-        }*/
 }
     public void dialogEvent(int keyCode){
-        Log.e("dialogE","dialogEvent");
-            //mousePointer.setVisibility(View.GONE);
+        //mousePointer.setVisibility(View.GONE);
         switch (keyCode){
             case KeyEvent.KEYCODE_BACK:
                 Log.e("current focus",""+getCurrentFocus());
-                focusTemp = getCurrentFocus();
-                if(focusTemp != null){
-                    focusTemp.requestFocus();
-                }
-
                 dialogBack.setVisibility(View.GONE);
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:
@@ -420,7 +411,7 @@ public class MainActivity extends AppCompatActivity {
         keyCode = event.getKeyCode();
         if(dialogBack.getVisibility() == View.VISIBLE && event.getAction() != KeyEvent.ACTION_UP){
                 dialogEvent(keyCode);
-        }else{
+        }else{//Dialog not visible
             if (event.getAction() == KeyEvent.ACTION_UP){
                 if(pointerMoveTimer != null) {
                     pointerMoveTimer.cancel();
@@ -465,13 +456,12 @@ public class MainActivity extends AppCompatActivity {
                             MotionEvent.ACTION_UP, x, y, 0));
                     break;
                 case KeyEvent.KEYCODE_BACK:
+
                     if(webClient.isFullScreen()){
                         webClient.onHideCustomView();
                     }else{
                         dialogBack.setVisibility(View.VISIBLE);
-                        if(focusTemp != null) {
-                            focusTemp.requestFocus();
-                        }
+                        panelViews[row][column].requestFocus();
                     }
                     break;
             }
